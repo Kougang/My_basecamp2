@@ -1,0 +1,37 @@
+<h1><% if user_signed_in?  %></h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="text-center">Welcome <%= current_user.first_name %></h1>
+
+          <%# <p>Signed in as <h3></h3></p> %>
+            <p class='text-center'>To manage users, please sign in as an administrator.</p>
+
+            <div style='display:flex;'>
+                <p class="text-center p-2 m-4 rounded-lg mb-0" style=" height : 40px; flex-grow: 1; background-color: rgba(0, 0, 255, 0.2); border-radius: 7px;  ">
+                    <%= link_to "Manage users", view_path, class: "text-decoration-none text-primary" %>
+                </p>
+
+                <p class="text-center p-2 m-4 rounded-lg mb-0" style=" height : 40px; flex-grow: 1; background-color: rgba(0, 0, 255, 0.2); border-radius: 7px; ">
+                    <%= link_to "Manage projects", index_path, class: "text-decoration-none text-primary" %>
+                </p>
+
+                <p class='btn btn-danger m-4' style="flex-grow: 1;">
+                    <%= link_to "Logout", logout_path, method: :delete, class: "text-decoration-none text-light "  %>
+                </p>
+            </div>
+
+          <% else %>
+            <p>Please sign in to access your account.</p>
+            <p><%= link_to "Sign in", new_user_session_path, class: "text-decoration-none text-light btn btn-primary" %></p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%end%>

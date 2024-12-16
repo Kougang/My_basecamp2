@@ -1,0 +1,61 @@
+
+
+<% if user_signed_in? %>
+        
+        <div style=" background-color: rgba(0, 0, 255, 0.3); height:47px;">
+          <br>
+          <h2 style="text-align:center; ">
+            Signed in as <%= current_user.first_name %>
+          </h2><br>
+        </div>
+         
+        <div style="display:flex; justify-content:center; background-color: rgba(0, 0, 255, 0.2); " >
+
+          <p  class="text-decoration-none m-4 btn btn-secondary "   >
+              <%= link_to "Welcome page", root_path , class: "text-decoration-none text-white " %>
+          </p>
+          
+          <p class="m-4 btn btn-secondary " >
+              <%= link_to "new project", new_project_path, class: "text-decoration-none text-white" %>
+          </p>
+
+          <p class="btn btn-danger m-4 ">
+              <%= link_to "Log out", logout_path, method: :delete, class: "text-decoration-none text-white  " %>
+          </p>
+
+        </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+          
+          <div class="text-center ">
+            <span class="fw-bold  text-link" style="color: rgba(0, 50, 255, 0.8);"  >PROJECTS LIST </span><br>
+            <em class="text-secondary">click on project for more options<em>
+          </div><br>
+
+          <% @projects.each do |project| %>
+
+            <div> 
+              <p class="text-center border-bottom text-muted border-primary">
+                 <span>
+                    <%= link_to project.name, project_path(project), class: "text-decoration-none text-blue" %>
+                 </span>  <br> 
+                 <em style="opacity:0.7;">  
+                    <%= link_to project.description, project_path(project), class: "text-decoration-none text-dark text-secondary" %>
+                 </em>
+              </p>
+               
+            </div>
+
+          <% end %>
+
+      </div>
+    </div>
+  </div>  
+
+
+
+<% end %>
+<%= yield %>
+   

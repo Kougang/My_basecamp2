@@ -1,0 +1,126 @@
+<% if user_signed_in? %>
+        
+      <div style=" background-color: rgba(0, 0, 255, 0.3); height:47px;">
+        <br>
+        <h2 style="text-align:center; ">
+          Signed in as <%= current_user.first_name %>
+        </h2><br>
+      </div>
+       
+       <%# nav pannel %>
+      <div style="display:flex; justify-content:center; background-color: rgba(0, 0, 255, 0.2); " >
+        <p class="text-decoration-none m-4 btn btn-secondary ">
+          <%= link_to "Welcome page", root_path, class: "text-decoration-none  text-white" %>
+        </p>
+
+        <%# <p class="text-decoration-none m-4 btn btn-secondary ">
+          <%= link_to "project index", projects_path, class: "text-decoration-none  text-white"  %>
+        <%# </p>  %>
+
+        <p class="text-decoration-none m-4 btn btn-secondary ">
+          <%= link_to "manage projects", index_path,class: "text-decoration-none  text-white" %>
+        </p>
+
+        <p class="text-decoration-none m-4 btn btn-secondary ">
+          <%= link_to "edit project", edit_project_path(@project), class: "text-decoration-none  text-white"  %>
+        </p>
+
+        <%# affichage des projects %>     
+          <%= form_tag project_path(@project), method: :delete do %>
+            <p class="m-4">            
+              <%= submit_tag "Delete this project", data: { confirm: "Êtes-vous sûr de vouloir supprimer ce projet ?" }, class: " btn btn-danger" %>
+            </p>  
+          <% end %>
+
+        <p class="m-4">
+          <%= link_to "Log out", logout_path, method: :delete, class: "text-decoration-none text-dark btn btn-danger text-white" %>
+        </p>
+
+      </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+      <br>
+
+        <div> 
+          <p class="text-center border-bottom text-muted border-primary">
+              <span>
+                <%=  @project.name %>
+              </span>  <br> 
+              <em style="opacity:0.7;">  
+                <%= @project.description%>
+              </em>
+          </p>             
+        </div>
+
+      <!-- Affichage des utilisateurs affectés au projet -->
+      <p >
+        <h2>Users assigned to the project :</h2>
+        <em >To add users to project, log in as admin<em>
+      </p>
+
+      <div style="display:flex;">  
+        <ul>
+          <% @project.users.each do |user| %>
+            <p>
+              <span>Name:    <%= user.first_name %></span><br>
+              <em><%= user.email %></em>
+            <p>
+            <%# code de basculement %>
+            <%= form_tag toggle_role_user_path(user), method: :put do %> 
+              <% if user.role == 'user' %>
+                  <%= submit_tag 'Pass as admin', class: 'btn btn-primary ' %><br>
+              <% else %>
+                  <%= submit_tag 'Pass as user', class: 'btn btn-secondary ' %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <!-- Formulaire pour ajouter un utilisateur au projet -->
+        <div style="margin-left:200px;">
+            <% if current_user.role == 'admin' %>
+              <%= form_with(url: project_add_user_path(@project), method: :post) do |f| %>
+                <div class="form-group">
+                  <%= f.label :email, "user mail" %>
+                  <%= f.email_field :email, class: "form-control", required: true %>
+                  <%= f.submit "add user", class:"btn btn-primary m-1" %>
+                </div>
+              <% end %>
+            <% end %>
+        </div>    
+        </div>    
+      </div>
+
+      <%# ajout de la zone d ajouter des pieces jointes %>
+<h3>Attachments</h3>
+<ul>
+  <% @project.attachments.each do |attachment| %>
+    <li>
+      <%= link_to attachment.file.filename.to_s, url_for(attachment.file), target: "_blank" %> 
+      <% if attachment.user == current_user || @project.admin == current_user %>
+<span>
+<%= form_with url: destroy_attachment_path(@project, attachment), method: :delete, local: true do %>
+  <%= submit_tag "Delete", class: "btn btn-danger btn-sm" %>
+<% end %></span>
+
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_with model: [@project, Attachment.create], local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :file, "Upload File", class: "form-label" %>
+    <%= f.file_field :file, class: "form-control" %>
+  </div>
+  <%= f.submit "Upload Attachment", class: "btn btn-primary" %>
+<% end %>
+
+
+    </div>
+  </div>  
+
+
+<% end %>

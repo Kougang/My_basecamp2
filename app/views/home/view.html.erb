@@ -1,0 +1,75 @@
+    <div style=" background-color: rgba(0, 0, 255, 0.3); height:47px;">
+        <br>
+        <h2 style="text-align:center; ">
+          Signed in as <%= current_user.first_name %>
+        </h2><br>
+    </div>
+       
+      <%# nav pannel %>
+    <div style="display:flex; justify-content:center; background-color: rgba(0, 0, 255, 0.2); " >
+      <p class="text-decoration-none m-4 btn btn-secondary ">
+        <%= link_to "Welcome page", root_path, class: "text-decoration-none  text-white" %>
+      </p>
+
+      <p class="text-decoration-none m-4 btn btn-secondary ">
+        <%= link_to "manage projects", index_path,class: "text-decoration-none  text-white" %>
+      </p>
+
+      <p class="btn btn-danger m-4 ">
+          <%= link_to "Log out", logout_path, method: :delete, class: "text-decoration-none text-white  " %>
+      </p>
+
+    </div>
+
+    <div class="text-center ">
+        <span class="fw-bold  text-link" style="color: rgba(0, 50, 255, 0.8);"  >USERS LIST</span><br>
+    </div><br>
+
+<h1><% if user_signed_in?  %></h1>
+
+<div class="container" style='padding-top: 1%; padding-bottom: 1%;'>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card " >
+        <div class="card-body">
+                <%# <%if current_user.role == 'admin'%> 
+            
+            <% @users.each do |user| %>
+                <div class="text-center border-bottom border-primary">
+                    <span>
+                        Name:<%= user.first_name  %>
+                    </span> <br> 
+                    <span>
+                        Email:<%= user.email %>
+                    </span>                          
+                    <%# code de suppression %>
+                    <div style="display:flex; justify-content:center;">
+                        <span style="padding-right:40px;"> 
+                            <%= form_tag delete_user_path(user), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cet utilisateur?' } do %>    
+                                <%= submit_tag 'Delete' ,style:"height:38px;" ,class:"btn btn-danger"%>
+                            <% end %>
+                        </span>
+                    <%# code de basculement %>
+                        <span>
+                            <%= form_tag toggle_role_user_path(user), method: :put do %>    
+                            <% if user.role == 'user' %>
+                                <%= submit_tag 'Pass as admin', class: 'btn btn-primary' %>
+                            <% else %>
+                                <%= submit_tag 'Pass as user', class: 'btn btn-secondary' %>
+                            <% end %>
+                            <% end %>
+                        </span>
+                    </div>
+                </div><br>
+            <% end %>
+                    
+                <%# <%end%>
+
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<% end %>
+<%= yield %>
+

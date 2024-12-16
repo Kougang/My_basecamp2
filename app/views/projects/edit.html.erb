@@ -1,0 +1,80 @@
+<%# <h1>Edit Project</h1> %>
+
+    <div style=" background-color: rgba(0, 0, 255, 0.3); height:47px;">
+        <br>
+        <h2 style="text-align:center; ">
+          Signed in as <%= current_user.first_name %>
+        </h2><br>
+    </div>
+       
+      <%# nav pannel %>
+    <div style="display:flex; justify-content:center; background-color: rgba(0, 0, 255, 0.2); " >
+      <p class="text-decoration-none m-4 btn btn-secondary ">
+        <%= link_to "Welcome page", root_path, class: "text-decoration-none  text-white" %>
+      </p>
+
+      <p class="text-decoration-none m-4 btn btn-secondary ">
+        <%= link_to "manage projects", index_path,class: "text-decoration-none  text-white" %>
+      </p>
+
+      <p class="m-4 btn btn-secondary " >
+          <%= link_to "new project", new_project_path, class: "text-decoration-none text-white" %>
+      </p>
+
+      <p class="btn btn-danger m-4 ">
+          <%= link_to "Log out", logout_path, method: :delete, class: "text-decoration-none text-white  " %>
+      </p>
+
+    </div>
+
+    <div class="text-center ">
+          <span class="fw-bold  text-link" style="color: rgba(0, 50, 255, 0.8);"  >EDIT PROJECT </span><br>
+    </div><br>
+
+<div class="container" style='padding-top: 2%; padding-bottom: 2%;'>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card " >
+        <div class="card-body">
+          <%# <h2 class="card-title text-center">Log in</h2> %>
+          <%= form_with(model: @project, url: project_path(@project), method: :patch) do |form| %>
+            <% if @project.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+                <ul>
+                  <% @project.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            
+              <div class="form-group">
+                <%= form.label :name %>
+                <span>
+                  <%= form.text_field :name, class: "form-control" %>
+                </span>
+              </div><br>
+
+              <div class="form-group">
+                <%= form.label :description  %>
+                <%= form.text_area :description, class: "form-control"  %>
+              </div><br>
+
+              <div class="form-actions text-center ">
+                <span><%= form.submit class: "btn btn-primary" %></span>
+                <span><%= link_to 'Back', project_path(@project), class: "btn btn-light border border-primary" %></span>
+              </div>
+          
+
+              <p>
+                <%# <%= link_to 'Back', project_path(@project), class: "btn btn-light border border-primary" %> 
+              </p>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      

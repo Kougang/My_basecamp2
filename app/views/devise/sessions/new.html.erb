@@ -1,0 +1,39 @@
+<div class="container" style='padding-top: 10%; padding-bottom: 10%;'>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card " >
+        <div class="card-body">
+          <h2 class="card-title text-center">Log in</h2>
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%# <div class="form-inputs"> %>
+            <div class="form-group">  
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email", class: "form-control" } %>
+            </div>
+
+            <div class="form-group">
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "current-password", class: "form-control" } %>
+            </div>
+
+            <div class="form-group">
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable?   %>
+            </div> 
+
+            <div class="form-actions form-group text-center">
+              <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+          <div class= 'text-center'>
+           <%= render "devise/shared/links" %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

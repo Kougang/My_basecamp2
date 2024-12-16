@@ -1,0 +1,52 @@
+
+    <div class="container mx-auto" style="padding: 25%; padding-right: 25%; padding-top: 5%; padding-bottom: 10%;">    
+      <div class="card " >
+        <div class="card-body">
+          <h2 class="card-title text-center">  Sign up</h2>
+
+          <form action="<%= registration_path(resource_name) %>" accept-charset="UTF-8" method="post">
+            <!-- Ajoutez le jeton CSRF -->
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+            <div class="form-group">
+
+              <div class="form-group">
+                <label for="user_first_name">F_name</label><br>
+                <input type="text" name="user[first_name]" id="user_first_name" required="required" autofocus="autofocus" autocomplete="first_name" class="form-control">
+              </div><br>
+
+              <%# <div class="form-group">
+                <label for="user_first_name">first_name</label><br>
+                <input type="text" name="user[first_name]" id="user_first_name" required="required" autofocus="autofocus" autocomplete="first_name" class="form-control">
+              </div><br> %>
+
+              <div class="form-group">
+                <label for="user_email">Email</label><br>
+                <input type="email" name="user[email]" id="user_email" required="required" autofocus="autofocus" autocomplete="email" class="form-control">
+              </div><br>
+
+              <div class="form-group">
+                <label for="user_password">Password</label><br>
+                <input type="password" name="user[password]" id="user_password" required="required" autocomplete="new-password" class="form-control">
+                <p class="text-danger">
+                  <% if @minimum_password_length %>
+                    <%= @minimum_password_length %> characters minimum
+                  <% end %>
+                </p>
+              </div><br>
+
+              <div class="form-group">
+                <label for="confirm_password">Confirm Password</label><br>
+                <input type="password" name="user[password_confirmation]" id="user_password_confirmation" required="required" autocomplete="new-password" class="form-control">
+              </div><br>
+            </div>
+
+            <div class="form-actions text-center mx-auto my-4">
+              <input type="submit" name="commit" value="Sign up" class="btn btn-primary"><br>
+              <%= render "devise/shared/links" %>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>

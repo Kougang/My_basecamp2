@@ -1,0 +1,59 @@
+    <div style=" background-color: rgba(0, 0, 255, 0.3); height:47px;">
+        <br>
+        <h2 style="text-align:center; ">
+          Signed in as <%= current_user.first_name %>
+        </h2><br>
+    </div>
+       
+      <%# nav pannel %>
+    <div style="display:flex; justify-content:center; background-color: rgba(0, 0, 255, 0.2); " >
+      <p class="text-decoration-none m-4 btn btn-secondary ">
+        <%= link_to "Welcome page", root_path, class: "text-decoration-none  text-white" %>
+      </p>
+
+      <p class="text-decoration-none m-4 btn btn-secondary ">
+        <%= link_to "manage projects", index_path,class: "text-decoration-none  text-white" %>
+      </p>
+
+      <p class="btn btn-danger m-4 ">
+          <%= link_to "Log out", logout_path, method: :delete, class: "text-decoration-none text-white  " %>
+      </p>
+
+    </div>
+
+    <div class="text-center ">
+          <span class="fw-bold  text-link" style="color: rgba(0, 50, 255, 0.8);"  >NEW PROJECT </span><br>
+    </div><br>
+
+<div class="container" style='padding-top: 2%; padding-bottom: 2%;'>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card " >
+        <div class="card-body">
+            <%= simple_form_for @project do |f| %>
+            <div>
+              
+                  <p class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="project[name]" class="form-control">
+                  </p>
+
+                  <p class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="project[description]" class="form-control"></textarea>
+                  </p>
+                
+                <p class="form-action " >
+                  <%= f.submit  class:"btn btn-primary" %>
+                </p>
+          </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
