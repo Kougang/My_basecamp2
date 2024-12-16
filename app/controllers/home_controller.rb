@@ -12,11 +12,22 @@ class HomeController < ApplicationController
       @users = User.all
     end
 
+    # def destroy
+    #     @user = User.find(params[:id])
+    #     @user.destroy
+    #     redirect_to view_path, notice: 'User was successfully deleted.'
+    #    end
+
     def destroy
-        @user = User.find(params[:id])
+      @user = User.find(params[:id])
+      begin
         @user.destroy
         redirect_to view_path, notice: 'User was successfully deleted.'
+      rescue ActiveRecord::InvalidForeignKey
+        redirect_to view_path, alert: "Cannot delete user. Please remove the user from all projects, attachments and others first."
+      end
     end
+    
 
     def toggle_role_user
 
