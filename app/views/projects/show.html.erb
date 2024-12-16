@@ -91,20 +91,20 @@
             <% end %>
         </div>    
         </div>    
-      </div>
-
+     
+<div class="border-top  border-primary">
       <%# ajout de la zone d ajouter des pieces jointes %>
-<h3>Attachments</h3>
-<ul>
+<h3 style="text-align:center;">Attachments</h3>
+<ul >
   <% @project.attachments.each do |attachment| %>
-    <li>
-      <%= link_to attachment.file.filename.to_s, url_for(attachment.file), target: "_blank" %> 
+    <li style="display:flex; flex-direction:row;">
+      <span style = "margin-right: 10px;">
+        <%= link_to attachment.file.filename.to_s, url_for(attachment.file), target: "_blank" %>
+      </span>
       <% if attachment.user == current_user || @project.admin == current_user %>
-<span>
-<%= form_with url: destroy_attachment_path(@project, attachment), method: :delete, local: true do %>
-  <%= submit_tag "Delete", class: "btn btn-danger btn-sm" %>
-<% end %></span>
-
+        <%= form_with url: destroy_attachment_path(@project, attachment), method: :delete, local: true do %>
+          <%= submit_tag "Delete", class: "btn btn-danger btn-sm" %>
+        <% end %>
       <% end %>
     </li>
   <% end %>
@@ -121,6 +121,6 @@
 
     </div>
   </div>  
-
-
+ </div>
+</div>
 <% end %>
