@@ -22,12 +22,18 @@ Rails.application.routes.draw do
   get 'view', to: 'home#view'
   get 'index', to: 'projects#index'
 
+  # add attachments roots
   delete 'projects/:project_id/attachments/:id', to: 'attachments#destroy', as: :destroy_attachment
-  # delete 'users/:id', to: 'home#destroy', as: :delete_user
-
   resources :projects do
     resources :attachments, only: [:create]
   end
 
+  # add threads and message roots
+  
+  resources :projects do
+    resources :threads, only: [:new, :create, :edit, :update, :destroy] do
+      resources :messages, only: [:new, :create, :edit, :update, :destroy]
+    end
+  end
   
 end
