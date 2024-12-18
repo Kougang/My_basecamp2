@@ -1,0 +1,2 @@
+class TThreadsController < ApplicationController
+end

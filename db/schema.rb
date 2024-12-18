@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_10_073320) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_18_162031) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,12 +50,33 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_073320) do
     t.index ["user_id"], name: "index_attachments_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "t_thread_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["t_thread_id"], name: "index_messages_on_t_thread_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
     t.integer "user_id"
+  end
+
+  create_table "t_threads", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "project_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_t_threads_on_project_id"
+    t.index ["user_id"], name: "index_t_threads_on_user_id"
   end
 
   create_table "user_projects", force: :cascade do |t|
@@ -88,6 +109,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_073320) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attachments", "projects"
   add_foreign_key "attachments", "users"
+  add_foreign_key "messages", "t_threads"
+  add_foreign_key "messages", "users"
+  add_foreign_key "t_threads", "projects"
+  add_foreign_key "t_threads", "users"
   add_foreign_key "user_projects", "projects"
   add_foreign_key "user_projects", "users"
 end
