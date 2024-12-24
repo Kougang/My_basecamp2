@@ -83,6 +83,9 @@ rails server
 working in pairs allowed us to bring this project to fruition, it was a great delight to be able to talk
 with a complete stranger and to do something concrete with this person, we hope to be able to complete our course
 
+# only admin and creator thread can delete it
+
+#...
 <span><i>Made at <a href='https://qwasar.io'>Qwasar SV -- Software Engineering School</a></i></span>
 <span><img alt='Qwasar SV -- Software Engineering School's Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px' /></span>
 
