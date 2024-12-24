@@ -1,7 +1,8 @@
-class MessagesController < 
+class MessagesController < ApplicationController
   before_action :set_thread
 
   def new
+    @thread = TThread.find(params[:t_thread_id]) 
     @message = @thread.messages.new
   end
 
@@ -10,7 +11,7 @@ class MessagesController <
     @message.user = current_user # L'utilisateur connecté
 
     if @message.save
-      redirect_to project_thread_path(@thread.project, @thread), notice: "Message posted successfully!"
+      redirect_to project_t_thread_path(@thread.project, @thread), notice: "Message posted successfully!"
     else
       render :new
     end
@@ -24,7 +25,7 @@ class MessagesController <
     @message = @thread.messages.find(params[:id])
 
     if @message.update(message_params)
-      redirect_to project_thread_path(@thread.project, @thread), notice: "Message updated successfully!"
+      redirect_to project_t_thread_path(@thread.project, @thread), notice: "Message updated successfully!"
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class MessagesController <
   private
 
   def set_thread
-    @thread = Thread.find(params[:thread_id])
+    @thread = TThread.find(params[:t_thread_id])
   end
 
   def message_params

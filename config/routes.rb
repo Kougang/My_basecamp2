@@ -29,9 +29,10 @@ Rails.application.routes.draw do
   end
 
   # add threads and message roots
-  
+  # project_t_thread GET '/projects/:project_id/t_threads/:id(.:format)' 't_threads#show'
+
   resources :projects do
-    resources :t_threads, only: [:new, :create, :edit, :update, :destroy] do
+    resources :t_threads, only: [:new, :create, :edit, :update, :destroy, :show] do
       resources :messages, only: [:new, :create, :edit, :update, :destroy]
     end
   end

@@ -1,0 +1,13 @@
+<!--appel du partial view _form.erb.html-->
+<%#= render 'form' %>
+<!---->
+
+<h1><%= @thread.title %></h1>
+<p><%= @thread.content %></p>
+
+<h2>Messages</h2>
+
+<!--appel du partial view _message.erb.html-->
+<%= render @thread.messages %>
+
+<%= link_to "New Message", new_project_t_thread_message_path(@thread.project, @thread) %>

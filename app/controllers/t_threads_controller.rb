@@ -6,6 +6,12 @@ class TThreadsController < ApplicationController
     @thread = @project.threads.new
   end
 
+  def show
+    @project = Project.find(params[:project_id])
+    @thread = @project.threads.find(params[:id])
+    @messages = @thread.messages
+  end
+
   def create
     @thread = @project.threads.new(thread_params)
     @thread.user = current_user # L'utilisateur connecté (doit être admin)
@@ -44,12 +50,16 @@ class TThreadsController < ApplicationController
   end
 
   def thread_params
-    params.require(:thread).permit(:title, :content)
+    params.require(:t_thread).permit(:title, :content)
   end
 
   def authorize_admin!
-    unless current_user.admin_of?(@project)
+     
+     unless current_user.role=='admin'
       redirect_to @project, alert: "Only project admins can perform this action."
     end
+    # unless current_user.admin_of?(@project)
+    #   redirect_to @project, alert: "Only project admins can perform this action."
+    # end
   end
 end
