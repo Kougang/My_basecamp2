@@ -5,9 +5,19 @@
 <h1><%= @thread.title %></h1>
 <p><%= @thread.content %></p>
 
+<% if current_user.role == 'admin' && @thread.user == current_user %>
+  <%= link_to "Edit Thread", edit_project_t_thread_path(@project, @thread), class: "btn btn-warning" %>
+  <%= link_to "Delete Thread", project_t_thread_path(@project, @thread), 
+              method: :delete, 
+              data: { confirm: "Are you sure you want to delete this thread?" }, 
+              class: "btn btn-danger" %>
+<% end %>
+
 <h2>Messages</h2>
 
 <!--appel du partial view _message.erb.html-->
 <%= render @thread.messages %>
 
 <%= link_to "New Message", new_project_t_thread_message_path(@thread.project, @thread) %>
+
+<!--formulaire d akout du nouveau message-->
