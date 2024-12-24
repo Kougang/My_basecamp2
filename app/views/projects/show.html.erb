@@ -93,6 +93,7 @@
         </div>    
      
 <div class="border-top  border-primary">
+
       <%# ajout de la zone d ajouter des pieces jointes %>
 <h3 style="text-align:center;">Attachments</h3>
   <ul >
@@ -101,12 +102,14 @@
         <span style = "margin-right: 10px;">
           <%= link_to attachment.file.filename.to_s, url_for(attachment.file), target: "_blank" %>
         </span>
-        <% if attachment.user == current_user || @project.admin == current_user %>
+        <%# if attachment.user == current_user || @project.admin == current_user %>
+          <%# if attachment.user_id.role ==  ||attachment.user_id == current_user.id %> 
+<!----> 
           <%= form_with url: destroy_attachment_path(@project, attachment), method: :delete, local: true do %>
             <%= submit_tag "Delete", class: "btn btn-danger btn-sm" %>
           <% end %>
-        <% end %>
-      </li>
+        <%# end %>
+<!---->      </li>
     <% end %>
   </ul>
 
@@ -119,30 +122,32 @@
 <% end %>
 
 <!--zone du thread-->
-<div class="border-top border-primary">
+<div class="border-top border-primary mt-3">
   <h3 style="text-align:center;">Threads</h3>
-  <ul>
-    <% @project.threads.each do |thread| %>
-      <li>
-        <%= link_to thread.title, project_t_thread_path(@project, thread), class: "text-decoration-none text-primary" %>
-      </li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @project.threads.each do |thread| %>
+        <li>
+          <%= link_to thread.title, project_t_thread_path(@project, thread), class: "text-decoration-none text-primary" %>
+        </li>
+      <% end %>
+    </ul>
 
-  <!-- Formulaire pour ajouter un nouveau thread -->
-  <h4 style="text-align:center;">Create a New Thread</h4>
-  <%= form_with(model: [@project, TThread.new], local: true) do |f| %>
-    <div class="form-group mb-3">
-      <%= f.label :title, "Thread Title", class: "form-label" %>
-      <%= f.text_field :title, class: "form-control", required: true %>
-    </div>
-    <div class="form-group">
-      <%= f.label :description, "Description", class: "form-label" %>
-      <%= f.text_area :description, rows: 3, class: "form-control" %>
-    </div>
-    <%= f.submit "Create Thread", class: "btn btn-primary" %>
-  <% end %>
-</div>
+        <!-- Formulaire pour ajouter un nouveau thread -->
+    <% if current_user.role == 'admin'   %>  <!-- # you need to be and admin to create a thread-->
+        <h4 style="text-align:center;">Create a New Thread</h4>
+        <%= form_with(model: [@project, TThread.new], local: true) do |f| %>
+          <div class="form-group mb-3">
+            <%= f.label :title, "Thread Title", class: "form-label" %>
+            <%= f.text_field :title, class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, "Description", class: "form-label" %>
+            <%= f.text_area :description, rows: 3, class: "form-control" %>
+          </div>
+          <%= f.submit "Create Thread", class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+      </div>
 
 
 
