@@ -10,6 +10,7 @@ class TThreadsController < ApplicationController
     @project = Project.find(params[:project_id])
     @thread = @project.threads.find(params[:id])
     @messages = @thread.messages
+    
   end
 
   def create

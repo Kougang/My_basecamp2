@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
   def create
     @message = @thread.messages.new(message_params)
     @message.user = current_user # L'utilisateur connecté
+    puts "utilisateur courant dans messages: #{ @message.user}"
 
     if @message.save
       redirect_to project_t_thread_path(@thread.project, @thread), notice: "Message posted successfully!"

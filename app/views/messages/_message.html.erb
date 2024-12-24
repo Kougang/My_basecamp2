@@ -1,1 +1,2 @@
-<p><%= message.content %> - Posted by <%= message.user.name %></p>
+<p><%= message.content %> - Posted by  <strong> <%= message.user.first_name || "Unknown User" %> </strong> </p>
+<%#= message.user.name.presence || "Unknown User" %>
