@@ -25,6 +25,21 @@
 <!--appel du partial view _message.erb.html-->
 <%= render @thread.messages %>
 
-<%= link_to "New Message", new_project_t_thread_message_path(@thread.project, @thread) %>
+<h1>Create a New messages</h1>
 
+<%= form_with(model: [@thread.project, @thread,Message.new], local: true) do |form| %>
+
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 3 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Post Message" %>
+  </div>
+<% end %>
+
+<%#= link_to "New Message", new_project_t_thread_message_path(@thread.project, @thread) %>
+<!---->
 <!--formulaire d akout du nouveau message-->

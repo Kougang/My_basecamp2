@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
         @project = Project.find(params['id'])
         @user_project = UserProject.new # Créer une nouvelle instance de UserProject
 
-
     end
 
     def create
