@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+.chat-container {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
+.message-content {
+  word-wrap: break-word;
+}
+
+/* .btn-outline-danger {
+  border-radius: 50%;
+} */

@@ -1,45 +1,80 @@
-<!--appel du partial view _form.erb.html-->
-<%#= render 'form' %>
-<!---->
+<div class="container mt-5">
+  <!-- Thread Header -->
+  <div class="bg-primary text-white p-4 rounded mb-4">
+    <h1 class="h4 mb-2"><%= @thread.title %></h1>
+    <p class="mb-0"><%= @thread.content %></p>
+  </div>
 
-<h1><%= @thread.title %></h1>
-<p><%= @thread.content %></p>
+  <% if current_user.role == 'admin' && @thread.user == current_user %>
+    <div class="d-flex mb-3">
+      <%= link_to "Edit Thread", edit_project_t_thread_path(@project, @thread), class: "btn btn-warning me-2" %>
+      <%= form_with url: project_t_thread_path(@project, @thread), method: :delete, local: true do %>
+        <button type="submit" class="btn btn-danger">Delete</button>
+      <% end %>
+    </div>
+  <% end %>
 
-<% if current_user.role == 'admin' && @thread.user == current_user %>
-<div style="display:flex;">
-    <p style="margin-left:10px;">
-        <%= link_to "Edit Thread", edit_project_t_thread_path(@project, @thread), class: "btn btn-warning" %>
-    </p>
+  <!-- Messages Section -->
+  <div class="chat-container bg-light p-4 rounded mb-4" style="max-height: 400px; overflow-y: auto;">
+    <h2 class="h5 mb-4">Messages</h2>
+    <%= render @thread.messages %>
+  </div>
 
-    <p style="margin-left:10px; ">
-        <%= form_with url: project_t_thread_path(@project, @thread), method: :delete, local: true do %>
-            <%= submit_tag "Delete", class: "btn btn-danger btn-sm" %>
-        <% end %>
-    </p>
+  <!-- Message Form -->
+  <div class="bg-white p-4 rounded shadow-sm">
+    <h3 class="h6 mb-3">Create a New Message</h3>
+    <%= form_with(model: [@thread.project, @thread, Message.new], local: true) do |form| %>
+      <div class="mb-3">
+        <%= form.label :content, class: "form-label" %>
+        <%= form.text_area :content, rows: 3, class: "form-control" %>
+      </div>
+      <div>
+        <%= form.submit "Post Message", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<% end %>
 
+
+<!--
+<h1><%#= @thread.title %></h1>
+<p><%#= @thread.content %></p>
+
+<%# if current_user.role == 'admin' && @thread.user == current_user %>-->
+<!--<div style="display:flex;">
+    <p style="margin-left:10px;">
+        <%#= link_to "Edit Thread", edit_project_t_thread_path(@project, @thread), class: "btn btn-warning" %>-->
+<!--    </p>
+
+    <p style="margin-left:10px; ">
+        <%#= form_with url: project_t_thread_path(@project, @thread), method: :delete, local: true do %>-->
+            <%#= submit_tag "Delete", class: "btn btn-danger btn-sm" %>
+        <%# end %>
+<!--    </p>
+</div>
+
+<%# end %>-->
+<!--
 <h2>Messages</h2>
 
-<!--appel du partial view _message.erb.html-->
-<%= render @thread.messages %>
-
+<!--appel du partial view _message.erb.html-->-->
+<%#= render @thread.messages %>
+<!--
 <h1>Create a New messages</h1>
 
-<%= form_with(model: [@thread.project, @thread,Message.new], local: true) do |form| %>
-
+<%#= form_with(model: [@thread.project, @thread,Message.new], local: true) do |form| %>-->
+<!--
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, rows: 3 %>
-  </div>
+    <%#= form.label :content %>-->
+    <%#= form.text_area :content, rows: 3 %>
+<!--  </div>
 
   <div class="actions">
-    <%= form.submit "Post Message" %>
-  </div>
-<% end %>
+    <%#= form.submit "Post Message" %>-->
+<!--  </div>-->
+<%# end %>
+<!--
 
-<%#= link_to "New Message", new_project_t_thread_message_path(@thread.project, @thread) %>
-<!---->
-<!--formulaire d akout du nouveau message-->
+-->
