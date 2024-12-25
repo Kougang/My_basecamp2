@@ -51,6 +51,11 @@ to solve the problem that was submitted to us, I continued with the project my b
 preliminary steps from this project I analyzed then adjusted the application to meet the new expectations, the main problem lay in debugging the
 errors present in the code and understanding the mechanism of the ruby ​​​​on rail framework
 
+not having been able to do this project in docode, I do it in my personal git, here is the link, it will allow
+you to follow the version history and see all the files because there are too many to copy on docode
+in what docode told me, so I only copied the most important files
+https://github.com/Kougang/My_basecamp2.git
+
 ## Installation
 
 How to install your project? npm install? make? make re?
