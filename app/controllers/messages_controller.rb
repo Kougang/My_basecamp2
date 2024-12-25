@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
   def destroy
     @message = @thread.messages.find(params[:id])
     @message.destroy
-    redirect_to project_thread_path(@thread.project, @thread), notice: "Message deleted successfully!"
+    redirect_to project_t_thread_path(@thread.project, @thread), notice: "Message deleted successfully!"
   end
 
   private
