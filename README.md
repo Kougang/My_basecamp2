@@ -20,7 +20,9 @@ Things you may want to cover:
   project,
   users,
   users_project
-
+  attachments
+  messages
+  t_threads
 - How to run the test suite
 
   # Welcome to My Basecamp 2
