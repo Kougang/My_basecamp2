@@ -28,9 +28,11 @@
         <%= form.label :content, class: "form-label" %>
         <%= form.text_area :content, rows: 3, class: "form-control" %>
       </div>
-      <div>
+      <div class="d-flex justify-content-between">
         <%= form.submit "Post Message", class: "btn btn-primary" %>
+        <%= link_to 'Back to Projects', projects_path(@project), class: "btn btn-secondary" %>
       </div>
+      
     <% end %>
   </div>
 </div>
