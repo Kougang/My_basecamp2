@@ -23,31 +23,31 @@ Things you may want to cover:
 
 - How to run the test suite
 
-  # Welcome to My Basecamp 1
+  # Welcome to My Basecamp 2
 
 ---
 
 ## Task
 
-problem
-The problem to be solved in this project was multifaceted and very varied. We encountered certain problems including the following:
--Syntax errors: Fixed syntax errors in views, controllers or models.
--Data Validation: Ensure proper validation of incoming data to avoid inconsistencies or database errors.
--User Management: Implementation of user authentication and authorization, including login, registration and role management.
--User Interface Design: Created a friendly and responsive user interface using HTML, CSS and JavaScript.
-Feature integration: Integration of features such as adding and removing projects or users etc.
-challenge:
-The main thing in this application was to quickly identify problems, resolve them efficiently and continually improve the application:
+Problem
+The problem to be solved in this project was multifaceted and very varied. Some of the problems we encountered were:
+-Syntax Errors: Fixing syntax errors in views, controllers or models.
+-Data Validation: Ensuring proper validation of incoming data to avoid inconsistencies or database errors.
+-User Management: Implementing user authentication and authorization including login, registration and role management.
+-UI Design: Creating a user-friendly and responsive user interface using HTML, bootstrap.
+Feature Integration: Integrating features like adding and deleting projects or users etc.
+Challenge:
+The main thing in this application was to quickly identify problems, solve them efficiently and continuously improve the application:
 1-Debugging: Identifying and correcting code errors
-2- Tests: test the correct functioning of the application in order to detect any possible problems.
-3- Collaboration: we worked as a team to share knowledge and resolve problems more effectively.
+2-Testing: testing the proper functioning of the application in order to detect possible problems.
+3-Collaboration: this project was supposed to be a group project, but due to the absence of a second member, I had to do it alone
 
 ## Description
 
-How have you solved the problem?
-to solve the problem submitted to us, we started by building a ror project after taking preliminary
-steps from this project we analyzed then designed the application, the main problem lay in debugging the
-errors present in the code and the understanding the mechanism of the ruby on rail framework
+How did you solve the problem?
+to solve the problem that was submitted to us, I continued with the project my basecamp1 ROR after having made
+preliminary steps from this project I analyzed then adjusted the application to meet the new expectations, the main problem lay in debugging the
+errors present in the code and understanding the mechanism of the ruby ​​​​on rail framework
 
 ## Installation
 
@@ -66,33 +66,31 @@ To install this project it is necessary to follow the following steps:
 ## Usage
 
 the operation of our project is as follows, for more understanding we will only base ourselves on
-everything that has the right to an interface, so accessing the first time in the browser takes you to
-a connection page with recovery or recovery options. creation, a new user can be created, after this step
+everything that has the right to an interface, so accessing it the first time in the browser takes you to
+a login page with recovery or resume options. creation, a new user can be created, after this step
 the user is redirected to a home page with user or project management options, clicking on user management
-allows you to grant or withdraw the right to admin to a user, we can also delete a user, back on the home
-page, clicking on project management allows us to visualize, to create a new project by clicking on
-new project, it also gives us the possibility of view a project, by clicking on a project we view it and
-we have the possibility to edit it, delete it or add users to this project, the user has the possibility
-at any time to disconnect by clicking on the log button out present on the navbar, here is a complete
-explanation of how our application works
+allows to grant or remove administrator rights to a user, we can also delete a user, back on the home page
+, clicking on project management allows us to view, create a new project by clicking on
+new project, this also gives us the possibility to view a project, by clicking on a project we view it and
+we have the possibility to modify it, delete it (to delete a project on which we have already added users requires to first delete these users to be able to delete the project) or add users to this project, the user has the possibility
+at any time to disconnect by clicking on the disconnect button on the navigation bar,
+once in a project any user can create, delete attachments regardless of the format and moreover admin users can create threads, after the creation of the thread when the admin user clicks on it, he can edit or delete it.
+in a thread is associated a mini chat that allows to send messages, users can communicate via the chat with possibilities to edit or delete their messages. an administrator can delete the message of any user in this chat, I let you discover this work
 
-rails server
+railsserver
+
+# credentials
+
+admin
+email:k@gmail.com
+pwd: 11111111
+
+user:
+email: kougang@gmail.com
+pwd: 11111111
+
+you can create your own users and make experimentations
 
 ### The Core Team
 
-working in pairs allowed us to bring this project to fruition, it was a great delight to be able to talk
-with a complete stranger and to do something concrete with this person, we hope to be able to complete our course
-
-# only admin and creator thread can delete it
-
-# admin can delete message for any user
-
-#...
-<span><i>Made at <a href='https://qwasar.io'>Qwasar SV -- Software Engineering School</a></i></span>
-<span><img alt='Qwasar SV -- Software Engineering School's Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px' /></span>
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+It was a great pleasure for me to take over an application that I had coded in pairs for 8 months and to be able to get together to add new features.
