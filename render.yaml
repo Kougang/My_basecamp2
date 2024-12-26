@@ -1,0 +1,23 @@
+databases:
+  - name: mybasecamp2
+    databaseName: mybasecamp2_db
+    user: kougang
+    plan: free
+
+services:
+  - type: web
+    name: mybasecamp2
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mybasecamp2
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
