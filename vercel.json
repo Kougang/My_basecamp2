@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "bin/rails",
+      "use": "@vercel/ruby"
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "bin/rails" }]
+}
