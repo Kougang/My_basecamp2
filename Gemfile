@@ -85,8 +85,8 @@ end
 #   gem 'rspec-rails',
 #  end
 
-#production group
-# gem 'sqlite3', '~> 1.4', group: :production
+# production group
+gem 'pg', group: :production
 
 # RUNTIME 
 # gem 'mini_racer'
