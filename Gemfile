@@ -86,7 +86,7 @@ end
 #  end
 
 # production group
-gem 'pg', group: :production
+gem 'sqlite3', '~> 1.4', group: :production
 
 # RUNTIME 
 # gem 'mini_racer'
