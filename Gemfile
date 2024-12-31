@@ -1,10 +1,11 @@
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.2"
+gem "rails", "8.0.1"
 
+# "~> 7.1.3", ">= 7.1.3.2", 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -86,7 +87,7 @@ end
 #  end
 
 # production group
-gem 'pg', group: :production
+# gem 'pg', group: :production
 
 # RUNTIME 
 # gem 'mini_racer'
