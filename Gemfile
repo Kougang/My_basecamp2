@@ -87,8 +87,11 @@ end
 #  end
 
 # production group
-gem "sqlite3", ">= 1.4", group: :production
+# gem "sqlite3", ">= 1.4", group: :production
 
+production:
+  <<: *default
+  database: db/production.sqlite3
 # RUNTIME 
 # gem 'mini_racer'
 
