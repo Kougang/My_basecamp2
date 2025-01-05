@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "8.0.1"
@@ -87,7 +87,7 @@ end
 #  end
 
 # production group
-gem 'pg', group: :production
+gem "sqlite3", ">= 1.4", group: :production
 
 # RUNTIME 
 # gem 'mini_racer'
