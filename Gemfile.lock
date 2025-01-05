@@ -177,8 +177,6 @@ GEM
     parser (3.3.6.0)
       ast (~> 2.4.1)
       racc
-    pg (1.5.9)
-    pg (1.5.9-x64-mingw-ucrt)
     popper_js (2.11.8)
     psych (5.2.2)
       date
@@ -342,7 +340,6 @@ DEPENDENCIES
   haml
   importmap-rails
   jbuilder
-  pg
   puma (>= 5.0)
   rails (= 8.0.1)
   sassc-rails
