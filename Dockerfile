@@ -31,7 +31,10 @@ RUN bundle install && \
 # gestion de la cle secrete
 RUN gem install dotenv
 COPY .env /rails/.env
-    
+
+COPY config/credentials.yml.enc config/
+COPY config/master.key config/
+
 # Copy application code
 COPY . .
 
