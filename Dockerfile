@@ -29,12 +29,9 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile
 
 # gestion de la cle secrete
-RUN gem install dotenv
-COPY .env /rails/.env
-
-COPY config/credentials.yml.enc config/
-COPY config/master.key config/
-
+# RUN gem install dotenv
+# COPY .env /rails/.env
+    
 # Copy application code
 COPY . .
 
